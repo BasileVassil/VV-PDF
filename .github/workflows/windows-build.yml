@@ -1,0 +1,38 @@
+name: Windows build
+
+# Builds the desktop installer + portable exe and publishes them as a GitHub Release
+# named after the version in package.json (bump "version" to make a new release).
+on:
+  push:
+    branches: [main, windows-desktop]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install
+      - run: npm run dist:win
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PDF-Master-Windows
+          path: release/*.exe
+      - id: version
+        shell: bash
+        run: echo "version=$(node -p "require('./package.json').version")" >> "$GITHUB_OUTPUT"
+      - uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ steps.version.outputs.version }}
+          name: PDF Мастер ${{ steps.version.outputs.version }} для Windows
+          target_commitish: ${{ github.sha }}
+          files: release/*.exe
+          body: |
+            **PDF-Master-Setup-*.exe** — установщик (ярлык на рабочем столе).
+            **PDF-Master-Portable-*.exe** — версия без установки, просто запустите.

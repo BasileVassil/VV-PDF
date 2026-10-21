@@ -1,12 +1,12 @@
 import { PDFDocument, rgb, degrees } from 'pdf-lib';
 import * as pdfjsLib from 'pdfjs-dist';
+import pdfWorkerUrl from 'pdfjs-dist/build/pdf.worker.min.mjs?url';
 import { AnnotationItem, TextAnnotation, ImageAnnotation, ShapeAnnotation } from '../types/pdf';
 
-// Setup pdf.js worker using unpkg CDN or bundled worker
+// Setup pdf.js worker from the bundled copy so it also works offline (desktop build)
 if (typeof window !== 'undefined') {
   try {
-    // Standard worker source matching the installed pdfjs-dist version
-    pdfjsLib.GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@${pdfjsLib.version}/build/pdf.worker.min.mjs`;
+    pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorkerUrl;
   } catch (err) {
     console.warn('Could not set GlobalWorkerOptions.workerSrc:', err);
   }
