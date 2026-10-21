@@ -4,12 +4,14 @@ import path from 'path';
 import { defineConfig } from 'vite';
 import { VitePWA } from 'vite-plugin-pwa';
 
-export default defineConfig(() => {
+export default defineConfig(({ mode }) => {
+  // `vite build --mode electron` builds the Windows desktop version: no service worker / PWA.
+  const isElectron = mode === 'electron';
   return {
     plugins: [
       react(),
       tailwindcss(),
-      VitePWA({
+      !isElectron && VitePWA({
         registerType: 'autoUpdate',
         includeAssets: ['icon.svg', 'apple-touch-icon.png', 'pwa-192x192.png', 'pwa-512x512.png'],
         manifest: {

@@ -122,16 +122,18 @@ export const Header: React.FC<HeaderProps> = ({
           className="hidden"
         />
 
-        {/* Install / Download App button */}
-        <button
-          type="button"
-          onClick={onOpenInstallModal}
-          className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-emerald-300 hover:text-white bg-emerald-500/10 hover:bg-emerald-500/20 rounded-lg border border-emerald-500/30 transition-colors whitespace-nowrap shrink-0"
-          title="Как скачать или установить приложение"
-        >
-          <Download className="w-3.5 h-3.5 text-emerald-400" />
-          <span>Скачать приложение</span>
-        </button>
+        {/* Install / Download App button (not needed inside the desktop program) */}
+        {import.meta.env.MODE !== 'electron' && (
+          <button
+            type="button"
+            onClick={onOpenInstallModal}
+            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-emerald-300 hover:text-white bg-emerald-500/10 hover:bg-emerald-500/20 rounded-lg border border-emerald-500/30 transition-colors whitespace-nowrap shrink-0"
+            title="Как скачать или установить приложение"
+          >
+            <Download className="w-3.5 h-3.5 text-emerald-400" />
+            <span>Скачать приложение</span>
+          </button>
+        )}
 
         {!hasDocument && (
           <button
