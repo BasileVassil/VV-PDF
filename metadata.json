@@ -1,0 +1,6 @@
+{
+  "name": "PDF Мастер — Редактор и Организатор PDF",
+  "description": "Профессиональный веб-редактор PDF: добавление текста и изображений, объединение файлов, разделение и удаление страниц.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

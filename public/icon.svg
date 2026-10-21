@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="paper" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#1d4ed8"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="16" flood-color="#000000" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#bg)"/>
+  <g filter="url(#shadow)">
+    <!-- Main page body -->
+    <path d="M140 100 C140 86.7 150.7 76 164 76 L284 76 L372 164 L372 412 C372 425.3 361.3 436 348 436 L164 436 C150.7 436 140 425.3 140 412 Z" fill="#ffffff"/>
+    <!-- Folded corner -->
+    <path d="M284 76 L284 152 C284 158.6 289.4 164 296 164 L372 164 Z" fill="#cbd5e1"/>
+    <!-- PDF badge banner -->
+    <rect x="110" y="220" width="292" height="72" rx="14" fill="url(#paper)"/>
+    <text x="256" y="268" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="34" font-weight="800" fill="#ffffff" text-anchor="middle" letter-spacing="4">PDF MASTER</text>
+    <!-- Document lines -->
+    <rect x="176" y="324" width="160" height="12" rx="6" fill="#94a3b8"/>
+    <rect x="176" y="352" width="110" height="12" rx="6" fill="#cbd5e1"/>
+    <rect x="176" y="380" width="136" height="12" rx="6" fill="#cbd5e1"/>
+  </g>
+</svg>
